@@ -27,7 +27,8 @@ function ToDo(description) {
 
 // Tu código acá:
 ToDo.prototype.completeToDo = function () {
-  this.complete = true
+  this.complete = !this.complete
+  
 }
 
 // Agregar dos parámetros a la función 'buildToDo':
@@ -57,7 +58,9 @@ function buildToDo(todo, index) {
   if(todo.complete) {
     toDoText.className = "completeText"
   }
+  toDoText.addEventListener("click", completeToDo)
   toDoShell.appendChild(toDoText)
+  
   return toDoShell
 }
 
