@@ -16,7 +16,14 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
-    
+    let acm = 0
+    for( let i of array) {
+        if(Array.isArray(i)) {
+            acm = acm + countArray(i)
+        } else {
+            acm = acm + i
+        }
+    } return acm
 }
 
 
@@ -39,6 +46,14 @@ var countArray = function(array) {
 
 var countProps = function(obj) {
     // Tu código aca:
+    let acm= 0
+    for(let i in obj) {
+        acm++
+        let value = obj[i]
+        if(!Array.isArray(i) && typeof value === 'object') {
+            acm = acm + countProps(value)
+        }
+    } return acm
 
 }
 
@@ -53,7 +68,17 @@ var countProps = function(obj) {
 
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
-
+let acm = 0
+let lista = new LinkedList()
+current = this.head
+while (current) {
+    if(isNaN(Number(current.value))){
+        acm++
+        current.value = 'Kirikocho'
+    }
+    current = current.next
+}
+return acm;
 }
 
 
